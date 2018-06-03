@@ -1,3 +1,3 @@
 # Popular-Movies-Udacity-Android-
 ### API KEY
-Replace API string found in MainActivity.java.
+Create a new key in gradle.properties named "API" and add the api key.

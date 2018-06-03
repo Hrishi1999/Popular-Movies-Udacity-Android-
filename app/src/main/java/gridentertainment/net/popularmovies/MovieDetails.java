@@ -25,12 +25,12 @@ public class MovieDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_details);
-        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        final String title = getIntent().getStringExtra("title");
-        String image = getIntent().getStringExtra("image");
-        String ratings = getIntent().getStringExtra("ratings");
-        String desc = getIntent().getStringExtra("description");
-        final String releaseDate = getIntent().getStringExtra("release");
+        MovieHelper object = (MovieHelper) getIntent().getParcelableExtra("data");
+        final String title = object.getMovTitle();
+        String image = object.getPosterPath();
+        String ratings = object.getRatings();
+        String desc = object.getOverview();
+        final String releaseDate = object.getRelease();
 
         window = this.getWindow();
         setTitle(title);

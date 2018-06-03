@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -11,13 +11,13 @@ android:layout_height="match_parent">
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MovieDetails"
-        tools:layout_editor_absoluteY="81dp">
+        tools:layout_editor_absoluteY="73dp">
 
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="148dp"
             android:layout_height="186dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="12dp"
             android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -28,6 +28,7 @@ android:layout_height="match_parent">
             android:layout_width="204dp"
             android:layout_height="29dp"
             android:layout_marginStart="8dp"
+            android:visibility="gone"
             android:layout_marginEnd="8dp"
             android:ellipsize="end"
             android:maxLines="1"
@@ -43,62 +44,56 @@ android:layout_height="match_parent">
             android:id="@+id/overview_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
             android:text="Overview :"
             android:textColor="@android:color/black"
             android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="@+id/imageView2"
-            app:layout_constraintHorizontal_bias="0.245"
-            app:layout_constraintStart_toStartOf="@+id/imageView2"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/overview_tv2"
+            app:layout_constraintTop_toTopOf="@+id/imageView2" />
 
         <TextView
             android:id="@+id/overview_tv2"
-            android:layout_width="340dp"
-            android:layout_height="237dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_width="408dp"
+            android:layout_height="227dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:text="---"
             android:textColor="@android:color/black"
             android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/overview_tv"
-            app:layout_constraintTop_toBottomOf="@+id/overview_tv"
-            app:layout_constraintVertical_bias="0.111" />
+            app:layout_constraintBottom_toBottomOf="@+id/imageView5"
+            app:layout_constraintStart_toEndOf="@+id/imageView2"
+            app:layout_constraintTop_toBottomOf="@+id/overview_tv" />
 
         <TextView
             android:id="@+id/release_tv"
-            android:layout_width="163dp"
-            android:layout_height="27dp"
+            android:layout_width="102dp"
+            android:layout_height="28dp"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="4dp"
             android:text="-/-/-"
             android:textColor="@android:color/black"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView5"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.021"
-            app:layout_constraintStart_toEndOf="@+id/imageView5"
-            app:layout_constraintTop_toTopOf="@+id/imageView5"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintBottom_toBottomOf="@+id/overview_tv2"
+            app:layout_constraintEnd_toStartOf="@+id/overview_tv2"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/imageView3" />
 
         <TextView
             android:id="@+id/ratings_tv"
-            android:layout_width="167dp"
+            android:layout_width="107dp"
             android:layout_height="29dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:text="5"
             android:textColor="@android:color/black"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.018"
-            app:layout_constraintStart_toEndOf="@+id/imageView3"
-            app:layout_constraintTop_toTopOf="@+id/imageView3"
+            app:layout_constraintBottom_toTopOf="@+id/release_tv"
+            app:layout_constraintEnd_toStartOf="@+id/overview_tv2"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2"
             app:layout_constraintVertical_bias="0.0" />
 
         <ImageView
@@ -107,22 +102,23 @@ android:layout_height="match_parent">
             android:layout_height="29dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
             android:contentDescription="Popularity"
-            app:layout_constraintStart_toEndOf="@+id/imageView2"
-            app:layout_constraintTop_toBottomOf="@+id/title_tv"
+            app:layout_constraintEnd_toStartOf="@+id/ratings_tv"
+            app:layout_constraintStart_toStartOf="@+id/imageView2"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2"
             app:srcCompat="@drawable/heart" />
 
         <ImageView
             android:id="@+id/imageView5"
             android:layout_width="28dp"
             android:layout_height="29dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-            app:layout_constraintStart_toEndOf="@+id/imageView2"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/ratings_tv"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/imageView3"
             app:layout_constraintTop_toBottomOf="@+id/imageView3"
-            app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/ic_date_range_black_24dp" />
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

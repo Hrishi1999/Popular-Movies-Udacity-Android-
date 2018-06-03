@@ -1,5 +1,6 @@
 package gridentertainment.net.popularmovies;
 
+import android.os.Parcel;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,7 +24,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
-    private static final String API = "API KEY HERE";
+    private static final String API = BuildConfig.API_KEY;
     private RecyclerView mRecyclerView;
     private MoviesAdapter mAdapter;
 
@@ -90,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         List<MovieHelper> movies = new ArrayList<>();
 
         for (int i = 0; i < 25; i++) {
-            movies.add(new MovieHelper());
+            movies.add(new MovieHelper(Parcel.obtain()));
         }
         mAdapter.setMovieList(movies);
 
