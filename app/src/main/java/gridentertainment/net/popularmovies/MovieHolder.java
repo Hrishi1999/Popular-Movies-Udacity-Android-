@@ -23,7 +23,6 @@ class MovieViewHolder extends RecyclerView.ViewHolder
     public TextView textView;
     public LinearLayout linearLayout;
 
-    @SuppressLint("ResourceAsColor")
     public MovieViewHolder(View itemView) {
         super(itemView);
         imageView = itemView.findViewById(R.id.imageView);
@@ -74,9 +73,12 @@ class MovieViewHolder extends RecyclerView.ViewHolder
         }
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), MovieDetails.class);
+                Intent intent = new Intent(v.getContext(), MovieDetailsActivity.class);
                 intent.putExtra("data",movie);
-                v.getContext().startActivity(intent);
+                if(movie.getMovTitle() != null)
+                {
+                    v.getContext().startActivity(intent);
+                }
             }
         });
     }

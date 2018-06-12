@@ -23,7 +23,7 @@ public class MovieHelper implements Parcelable {
     private String release;
     @SerializedName("results")
     private List<MovieHelper> results;
-
+    private int id;
 
     public static final String PATH = "http://image.tmdb.org/t/p/w342";
 
@@ -34,6 +34,7 @@ public class MovieHelper implements Parcelable {
         overview = in.readString();
         ratings = in.readString();
         release = in.readString();
+        id = in.readInt();
         results = in.createTypedArrayList(MovieHelper.CREATOR);
     }
 
@@ -48,6 +49,10 @@ public class MovieHelper implements Parcelable {
             return new MovieHelper[size];
         }
     };
+
+    public MovieHelper() {
+
+    }
 
     public String getMovTitle() {
         return movTitle;
@@ -70,11 +75,15 @@ public class MovieHelper implements Parcelable {
     }
 
     public void setOverview(String description) {
-        this.overview = overview;
+        this.overview = description;
     }
 
     public String getRatings() {
         return ratings;
+    }
+
+    public void setRatings(String ratings) {
+        this.ratings = ratings;
     }
 
     public String getRelease() { return release; }
@@ -83,11 +92,15 @@ public class MovieHelper implements Parcelable {
         this.release = releaseD;
     }
 
-    public void getRatings(String rating) {
-        this.ratings = rating;
+    public List<MovieHelper> getResults() { return results; }
+
+    public int getId() {
+        return id;
     }
 
-    public List<MovieHelper> getResults() { return results; }
+    public void setId(int id1) {
+        this.id = id1;
+    }
 
 
     @Override
@@ -103,6 +116,7 @@ public class MovieHelper implements Parcelable {
         parcel.writeString(overview);
         parcel.writeString(ratings);
         parcel.writeString(release);
+        parcel.writeInt(id);
         parcel.writeTypedList(results);
     }
 }

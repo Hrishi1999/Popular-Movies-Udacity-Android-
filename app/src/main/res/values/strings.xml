@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Popular Movies</string>
+    <string name="popular_movies">Popular Movies</string>
+    <string name="top_rated">Top Rated</string>
+    <string name="starred">Starred</string>
+    <string name="overview_trailer_and_reviews">Overview, Trailer, and Reviews :</string>
+    <string name="reviews">Reviews</string>
+    <string name="videos">Videos</string>
+    <string name="popularity">Popularity</string>
+    <string name="overview">Overview :</string>
 </resources>

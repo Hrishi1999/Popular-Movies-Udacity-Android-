@@ -13,9 +13,6 @@ import java.util.List;
 class MoviesAdapter extends RecyclerView.Adapter<MovieViewHolder>
 {
 
-
-
-    private static final String TAG = "MovieAdapter";
     private List<MovieHelper> mMovieList;
     private OnItemClickListener listener;
     private LayoutInflater mInflater;
@@ -31,9 +28,9 @@ class MoviesAdapter extends RecyclerView.Adapter<MovieViewHolder>
         this.mInflater = LayoutInflater.from(context);
         this.mMovieList = new ArrayList<>();
         this.listener = listener;
-
     }
 
+    @NonNull
     @Override
     public MovieViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
