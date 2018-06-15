@@ -50,11 +50,14 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewHolder> {
         return (mReviewList == null) ? 0 : mReviewList.size();
     }
 
-    public void setMovieList(List<ReviewsHelper> reviewList)
+    public void setReviewsList(List<ReviewsHelper> reviewList)
     {
         this.mReviewList.clear();
         this.mReviewList.addAll(reviewList);
         notifyDataSetChanged();
     }
 
+    public ArrayList getReviewsList(){
+        return new ArrayList<ReviewsHelper>(mReviewList);
+    }
 }

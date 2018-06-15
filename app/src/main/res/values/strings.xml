@@ -3,9 +3,13 @@
     <string name="popular_movies">Popular Movies</string>
     <string name="top_rated">Top Rated</string>
     <string name="starred">Starred</string>
-    <string name="overview_trailer_and_reviews">Overview, Trailer, and Reviews :</string>
     <string name="reviews">Reviews</string>
     <string name="videos">Videos</string>
     <string name="popularity">Popularity</string>
     <string name="overview">Overview :</string>
+    <string name="internet_unavailable">Internet unavailable. Loaded Starred movies.</string>
+    <string name="pop_movies_title">Popular Movies</string>
+    <string name="top_movies_title">Top Movies</string>
+    <string name="star_movies_title">Starred Movies</string>
+
 </resources>

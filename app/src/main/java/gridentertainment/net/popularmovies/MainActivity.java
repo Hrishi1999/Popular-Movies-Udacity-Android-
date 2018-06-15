@@ -6,6 +6,7 @@ import android.net.ConnectivityManager;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -31,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
     private static final String API = BuildConfig.API_KEY;
     private RecyclerView mRecyclerView;
     private MoviesAdapter mAdapter;
-    private Parcelable recyclerViewState;
     private int lastMenu = 1;
     private static final String BASE_URL = "http://api.themoviedb.org/3/";
 
@@ -64,15 +64,17 @@ public class MainActivity extends AppCompatActivity {
             switch (value)
             {
                 case 1:
-                    loadFeed(1);
+                    setTitle(R.string.pop_movies_title);
                     break;
                 case 2:
-                    loadFeed(2);
+                    setTitle(R.string.top_movies_title);
                     break;
                 case 3:
-                    loadStarredMovies();
+                    setTitle(R.string.star_movies_title);
                     break;
             }
+            mAdapter.setMovieList(savedInstanceState.<MovieHelper>getParcelableArrayList("movies"));
+
         }
         else
         {
@@ -83,6 +85,9 @@ public class MainActivity extends AppCompatActivity {
             else
             {
                 loadStarredMovies();
+                Snackbar snackbar = Snackbar
+                        .make(mRecyclerView, getString(R.string.internet_unavailable), Snackbar.LENGTH_LONG);
+                snackbar.show();
             }
         }
 
@@ -91,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
         savedInstanceState.putInt("menu", lastMenu);
+        savedInstanceState.putParcelableArrayList("movies", mAdapter.getMovieList());
     }
 
     @Override
@@ -159,11 +165,11 @@ public class MainActivity extends AppCompatActivity {
         {
             case 1:
                 call = service.getPopularMovies(API);
-                setTitle("Popular Movies");
+                setTitle(R.string.pop_movies_title);
                 break;
             case 2:
                 call = service.getTopRatedMovies(API);
-                setTitle("Top Rated Movies");
+                setTitle(R.string.top_movies_title);
                 break;
         }
 
@@ -190,7 +196,7 @@ public class MainActivity extends AppCompatActivity {
         getLoaderManager().initLoader(
                 11, null, new StarredCursorLoader(this, starredAdapter));
         mRecyclerView.setAdapter(starredAdapter);
-        setTitle("Starred Movies");
+        setTitle(R.string.star_movies_title);
     }
 
     public boolean isNetworkAvailable(Context context) {

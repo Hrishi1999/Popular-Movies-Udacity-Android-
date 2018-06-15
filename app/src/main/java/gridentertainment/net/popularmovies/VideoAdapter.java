@@ -51,12 +51,15 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoHolder>{
         return (mVideoList == null) ? 0 : mVideoList.size();
     }
 
-    public void setMovieList(List<TrailerHelper> videoList)
+    public void setVideoList(List<TrailerHelper> videoList)
     {
         this.mVideoList.clear();
         this.mVideoList.addAll(videoList);
         notifyDataSetChanged();
     }
 
+    public ArrayList getVideoList(){
+        return new ArrayList<TrailerHelper>(mVideoList);
+    }
 }
 

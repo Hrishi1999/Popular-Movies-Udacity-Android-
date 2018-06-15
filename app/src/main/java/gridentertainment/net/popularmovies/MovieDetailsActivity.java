@@ -104,7 +104,14 @@ public class MovieDetailsActivity extends AppCompatActivity {
         mAdapter2 = new ReviewAdapter(this);
         mRecyclerView2.setAdapter(mAdapter2);
 
-        LoadVideosReviews();
+        if (savedInstanceState != null){
+            mAdapter.setVideoList(savedInstanceState.<TrailerHelper>getParcelableArrayList("videos"));
+
+            mAdapter2.setReviewsList(savedInstanceState.<ReviewsHelper>getParcelableArrayList("reviews"));
+        }
+        else{
+            LoadVideosReviews();
+        }
 
         titleTv.setText(title);
         ratingsTv.setText(ratings);
@@ -155,6 +162,12 @@ public class MovieDetailsActivity extends AppCompatActivity {
 
     }
 
+    protected void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putParcelableArrayList("videos", mAdapter.getVideoList());
+        savedInstanceState.putParcelableArrayList("reviews", mAdapter2.getReviewsList());
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_details, menu);
@@ -192,7 +205,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
         for (int i = 0; i < 25; i++) {
             videos.add(new TrailerHelper(Parcel.obtain()));
         }
-        mAdapter.setMovieList(videos);
+        mAdapter.setVideoList(videos);
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://api.themoviedb.org/3/")
@@ -212,7 +225,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
                 List<TrailerHelper> videos = response.body().getResults();
                 if(!videos.isEmpty())
                 {
-                    mAdapter.setMovieList(videos);
+                    mAdapter.setVideoList(videos);
                 }
                 else
                 {
@@ -237,7 +250,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
                 List<ReviewsHelper> reviews = response.body().getResults();
                 if(!reviews.isEmpty())
                 {
-                    mAdapter2.setMovieList(reviews);
+                    mAdapter2.setReviewsList(reviews);
                 }
                 else
                 {
